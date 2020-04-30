@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/layoutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/bar_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/base_title_bg"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#169BD5">
+
+            <ImageView
+                android:id="@+id/iv_wrisband_status"
+                android:layout_width="@dimen/size24dp"
+                android:layout_height="@dimen/size24dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/size20dp"
+                android:layout_marginTop="@dimen/size10dp"
+                android:layout_marginBottom="@dimen/size10dp"
+                android:src="@mipmap/ic_disconnect" />
+
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:id="@+id/base_title_back"-->
+<!--                android:layout_height="@dimen/size20dp"-->
+<!--                android:paddingLeft="@dimen/size15dp"-->
+<!--                android:paddingRight="50dp"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_marginTop="@dimen/size10dp"-->
+<!--                android:layout_marginBottom="@dimen/size10dp"-->
+<!--                android:src="@mipmap/icon_back_white" />-->
+
+            <TextView
+                android:id="@+id/base_title_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/normal_font_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/base_right_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:padding="@dimen/size10dp"
+                android:textColor="@color/normal_font_color"
+                android:textSize="14sp"/>
+
+            <ImageView
+                android:id="@+id/rightImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="@dimen/size15dp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.kuyou.smartwristband.views.RecyclerRefreshLayout
+        android:id="@+id/base_content"
+        android:layout_below="@id/layoutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

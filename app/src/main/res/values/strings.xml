@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Smart Wristband</string>
+
+    <string name="permisson_location_open">to open</string>
+    <string name="permisson_location_title">Location permissions are not turned on</string>
+    <string name="permisson_location_tips">Bluetooth search requires authorization for location information</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="sure">Confirm</string>
+    <string name="ok">OK</string>
+    <string name="tips_title">Tips</string>
+
+    <string name="uint_step">steps</string>
+    <string name="uint_heart_rate">times / minute Heartbeat</string>
+    <string name="uint_blood_pressure">mmHg</string>
+
+
+    <string name="bluetooth_disable">Bluetooth is not turned on</string>
+    <string name="contenct_device_info_none">unbound device</string>
+    <string name="blurtooth_use_cntent">Bluetooth is not turned on, you need to turn on Bluetooth first</string>
+    <string name="blurtooth_not_available">Bluetooth module is not available, please check the device</string>
+
+    <string name="info_battery" >"&#037; battery"</string>
+
+    <string name="head">Here is HeadView</string>
+    <string name="pull_to_refresh">pull refresh</string>
+    <string name="release_to_refresh">release refresh immediately</string>
+    <string name="refreshing">Refreshing...</string>
+    <string name="refresh_succeed">refreshed successfully</string>
+    <string name="refresh_fail">Refresh failed</string>
+    <string name="pullup_to_load">Pull up to load more</string>
+    <string name="release_to_load">Release to load immediately</string>
+    <string name="loading">loading...</string>
+    <string name="load_succeed">successfully loaded</string>
+    <string name="load_fail">failed to load</string>
+
+    <string name="pull_to_connect">Pull down connection</string>
+    <string name="release_to_connect">release immediate connection</string>
+    <string name="connecting">connecting...</string>
+    <string name="connect_succeed">connected successfully</string>
+    <string name="connect_fail">connection failed</string>
+
+    <string name="bound_wristband">bound wristband</string>
+    <string name="unbind_wristband">unbind wristband</string>
+    <string name="bound_wristband_no_connect">bound wristband (not connected)</string>
+    <string name="bound_wristband_connect">bound wristband (connected)</string>
+
+    <string name="enter_unbind_wristband">Are you sure you want to untie the bracelet?</string>
+    <string name="enter_bind_wristband">Whether to quickly bind the bracelet?</string>
+
+    <string name="device_info_mac_none">Wristband ID:<xliff:g id="query" example="device_id">%1$s</xliff:g>\n Long press to copy</string>
+    <string name="request_timeout">Bracelet not found, please try binding again</string>
+    <string name="run_background">Running in the background</string>
+
+    <string name="miss_permissions_config_title">Some permissions are missing and need to be turned on manually</string>
+</resources>

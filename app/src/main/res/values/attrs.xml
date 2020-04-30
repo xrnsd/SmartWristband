@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DrawableStates">
+        <!-- true表示开启状态 -->
+        <attr name="state_open" format="boolean" />
+        <attr name="state_pull_fresh" format="boolean" />
+        <attr name="state_free_fresh" format="boolean" />
+        <attr name="state_freshing" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ValueStateTextView">
+        <attr name="checkBackground" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="ItemLableValue">
+        <attr name="lable_color" format="color" />
+        <attr name="lable_text" format="string" />
+        <attr name="value_text" format="string" />
+        <attr name="right_arrow" format="reference" />
+        <attr name="left_drawable" format="reference" />
+        <!-- 点击该view会跳转，这个属性值为跳转目标activity的全名 -->
+        <attr name="target_activty" format="string" />
+        <!-- true表示开启状态 -->
+        <attr name="opened" format="boolean" />
+        <attr name="android:enabled" />
+        <!-- 默认是有的 -->
+        <attr name="has_bottom_line" format="boolean" />
+        <attr name="bottom_line_color" format="color" />
+        <attr name="bottom_line_width" format="dimension" />
+
+        <attr name="is_show" format="boolean" />
+        <!-- 默认是有的 -->
+        <attr name="has_top_line" format="boolean" />
+        <attr name="has_all_line" format="boolean" />
+        <attr name="top_line_color" format="color" />
+        <attr name="top_line_width" format="dimension" />
+        <attr name="valueTextColor" format="color"/>
+        <attr name="mvalueTextSize" format="integer"/>
+
+    </declare-styleable>
+</resources>

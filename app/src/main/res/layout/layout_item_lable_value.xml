@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+                android:background="@color/white"
+    android:layout_height="50dp">
+
+    <ImageView
+        android:id="@+id/left_drawable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/x20"
+        android:contentDescription="@string/app_name"/>
+    <com.kuyou.smartwristband.views.ValueStateTextView
+        android:id="@+id/value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/x20"
+        android:drawablePadding="7dp"
+        android:gravity="center_vertical|end"
+        android:minHeight="150dp"
+        android:textColor="#CCCCCC"
+        android:textSize="14sp"/>
+    <TextView
+        android:id="@+id/lable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/x20"
+        android:layout_toEndOf="@id/left_drawable"
+        android:layout_toStartOf="@+id/value"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxWidth="250dp"
+        android:singleLine="true"
+        android:textColor="@color/normal_font_color"
+        android:textSize="15sp"/>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,26 @@
+<com.kuyou.smartwristband.views.PullToRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refresh_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <include layout="@layout/refresh_head" />
+
+    <com.kuyou.smartwristband.views.PullableScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:id="@+id/imagesLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </RelativeLayout>
+    </com.kuyou.smartwristband.views.PullableScrollView>
+
+</com.kuyou.smartwristband.views.PullToRefreshLayout>

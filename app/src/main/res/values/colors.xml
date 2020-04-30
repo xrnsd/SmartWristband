@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="black_translucent">#B0000000</color>
+    <color name="gray_common">#eeeeee</color>
+    <color name="small_font_color">#999999</color>
+    <color name="normal_font_color">#ffffff</color>
+    <color name="sleep_deep_color">#1472DB</color>
+    <color name="dialog_sport_end_text_color">#1194E4</color>
+    <color name="dialog_sport_end_line_color">#4b000000</color>
+    <color name="black">#ff000000</color>
+    <color name="translate">#00000000</color>
+    <color name="driver_color">#CCCCCC</color>
+    <color name="btn_bg">#169bd5</color>
+    <color name="gray">#aaaaaa</color>
+    <color name="light_blue">#6593cb</color>
+
+</resources>

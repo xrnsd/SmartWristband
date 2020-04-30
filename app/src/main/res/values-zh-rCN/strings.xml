@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">智能手环</string>
+<!--    <string name="app_name">智能生体测验</string>-->
+
+    <string name="permisson_location_open">去开启</string>
+    <string name="permisson_location_title">位置信息权限未开启</string>
+    <string name="permisson_location_tips">蓝牙搜索需要授权位置信息权限</string>
+
+    <string name="cancel">取消</string>
+    <string name="sure">确认</string>
+    <string name="ok">确定</string>
+    <string name="tips_title">提示</string>
+
+    <string name="uint_step">步</string>
+    <string name="uint_heart_rate">次/分 心跳次数</string>
+    <string name="uint_blood_pressure">mmHg</string>
+
+    <string name="bluetooth_disable">蓝牙未打开</string>
+    <string name="contenct_device_info_none">无绑定设备</string>
+    <string name="blurtooth_use_cntent">蓝牙未开启，需要先开启蓝牙</string>
+    <string name="blurtooth_not_available">蓝牙模块不可用,请检查设备</string>
+
+    <string name="info_battery" >"&#037; 电量"</string>
+
+    <string name="head">这里是HeadView</string>
+    <string name="pull_to_refresh">下拉刷新</string>
+    <string name="release_to_refresh">释放立即刷新</string>
+    <string name="refreshing">正在刷新...</string>
+    <string name="refresh_succeed">刷新成功</string>
+    <string name="refresh_fail">刷新失败</string>
+    <string name="pullup_to_load">上拉加载更多</string>
+    <string name="release_to_load">释放立即加载</string>
+    <string name="loading">正在加载...</string>
+    <string name="load_succeed">加载成功</string>
+    <string name="load_fail">加载失败</string>
+
+    <string name="pull_to_connect">下拉连接</string>
+    <string name="release_to_connect">释放立即连接</string>
+    <string name="connecting">正在连接...</string>
+    <string name="connect_succeed">连接成功</string>
+    <string name="connect_fail">连接失败</string>
+
+    <string name="bound_wristband">绑定手环</string>
+    <string name="unbind_wristband">解绑手环</string>
+    <string name="bound_wristband_no_connect">已绑定手环(未连接)</string>
+    <string name="bound_wristband_connect">已绑定设备(已连接)</string>
+    <string name="enter_unbind_wristband">确认解绑手环?</string>
+    <string name="enter_bind_wristband">是否快速绑定手环?</string>
+    <string name="device_info_mac_none">手环ID:<xliff:g id="query" example="device_id">%1$s</xliff:g>\n长按可复制</string>
+    <string name="request_timeout">未找到手环，请重新尝试绑定！</string>
+    <string name="run_background">正在后台运行</string>
+
+    <string name="miss_permissions_config_title">缺少部分权限，需要手动开启</string>
+</resources>
