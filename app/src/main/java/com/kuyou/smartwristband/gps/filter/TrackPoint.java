@@ -9,8 +9,6 @@ import android.util.Log;
  * author: wuguoxian <br/>
  * date: 20200411 <br/>
  * remark1:<p> Location的基础信息加部分算法需要自定义信息 </p>
- *
- *
  */
 public class TrackPoint {
     private static final String TAG = "TrackPoint";
@@ -26,7 +24,6 @@ public class TrackPoint {
     protected float mBearing = -1; //角度
     protected long mTime = -1; //时间
     protected long mElapsedRealtimeNanos = -1;
-    protected boolean isFromMockProvider = false;
 
     //自定义参数
     protected float mBearingSpeed = -1; //角速度
@@ -41,12 +38,9 @@ public class TrackPoint {
 
     public TrackPoint(Location location) {
         setLocation(location);
+        //printfLocationInfo(TAG);
     }
 
-    /**
-     * action:复制轨迹点信息
-     * <p/>
-     */
     public void applyTrackPoint(TrackPoint point) {
         mLongitude = point.getLongitude();
         mLatitude = point.getLatitude();
@@ -59,10 +53,6 @@ public class TrackPoint {
         mBearingSpeed = point.getBearingSpeed();
     }
 
-    /**
-     * action:更新位置信息
-     * <p/>
-     */
     public void setLocation(Location location) {
         if (null == location) {
             Log.e(TAG, "setLocation fail > location is null");
@@ -77,28 +67,40 @@ public class TrackPoint {
         mBearing = location.getBearing();
     }
 
-    public void setLongitude(boolean val) {
-        isFromMockProvider = val;
-    }
-
-    public boolean isFromMockProvider() {
-        return isFromMockProvider;
-    }
-
     public void setLongitude(double val) {
         mLongitude = val;
+    }
+
+    public double getLongitude() {
+        return mLongitude;
     }
 
     public void setLatitude(double val) {
         mLatitude = val;
     }
 
+    public double getLatitude() {
+        return mLatitude;
+    }
+
     public void setAltitude(double val) {
         mAltitude = val;
     }
 
+    public double getAltitude() {
+        return mAltitude;
+    }
+
+    public boolean hasAltitude() {
+        return mAltitude != NONE;
+    }
+
     public void setAccuracy(float val) {
         mAccuracy = val;
+    }
+
+    public float getAccuracy() {
+        return mAccuracy;
     }
 
     public void setBearing(float val) {
@@ -109,6 +111,10 @@ public class TrackPoint {
         return mBearing;
     }
 
+    public boolean hasBearing() {
+        return mBearing != NONE;
+    }
+
     public void setBearingSpeed(float val) {
         mBearingSpeed = val;
     }
@@ -117,40 +123,12 @@ public class TrackPoint {
         return mBearingSpeed;
     }
 
-    public void setAngle(double val) {
-        mAngle = val;
-    }
-
-    public void setSpeed(float val) {
-        mSpeed = val;
+    public boolean hasBearingSpeed() {
+        return mBearingSpeed != NONE;
     }
 
     public void setTime(long val) {
         mTime = val;
-    }
-
-    public void setElapsedRealtimeNanos(long val) {
-        mElapsedRealtimeNanos = val;
-    }
-
-    public double getLongitude() {
-        return mLongitude;
-    }
-
-    public double getLatitude() {
-        return mLatitude;
-    }
-
-    public double getAltitude() {
-        return mAltitude;
-    }
-
-    public float getAccuracy() {
-        return mAccuracy;
-    }
-
-    public float getSpeed() {
-        return mSpeed;
     }
 
     /**
@@ -165,51 +143,55 @@ public class TrackPoint {
         return mTime;
     }
 
-    public long getElapsedRealtimeNanos() {
-        return mElapsedRealtimeNanos;
+    public void setAngle(double val) {
+        mAngle = val;
     }
 
     public double getAngle() {
         return mAngle;
     }
 
-    public boolean hasAltitude() {
-        return mAltitude != NONE;
+    public void setElapsedRealtimeNanos(long val) {
+        mElapsedRealtimeNanos = val;
+    }
+
+    public long getElapsedRealtimeNanos() {
+        return mElapsedRealtimeNanos;
+    }
+
+    public boolean hasLocation() {
+        return NONE != mLatitude && NONE != mLongitude;
+    }
+
+    public boolean isEqualsLocation(TrackPoint point) {
+        return getLongitude() == point.getLongitude()
+                && getLatitude() == point.getLatitude();
+    }
+
+    public void setSpeed(float val) {
+        mSpeed = val;
+    }
+
+    public float getSpeed() {
+        return mSpeed;
     }
 
     public boolean hasSpeed() {
         return mSpeed != NONE;
     }
 
-    public boolean hasBearing() {
-        return mBearing != NONE;
-    }
-
-    public boolean hasBearingSpeed() {
-        return mBearingSpeed != NONE;
-    }
-
-    public boolean hasLocation(){
-        return NONE!=mLatitude&&NONE!=mLongitude;
-    }
-
-    public boolean isEqualsLocation(TrackPoint point){
-         return getLongitude()==point.getLongitude()
-                 &&getLatitude()==point.getLatitude();
-    }
-
-    public boolean isSpeeding(){
-        if(hasSpeed())
-            return getSpeed()>POINT_SPEED_MAX;
+    public boolean isSpeeding() {
+        if (hasSpeed())
+            return getSpeed() > POINT_SPEED_MAX;
         return false;
     }
 
-    public void printfLocationInfo(String TAG){
-        Log.d(TAG, new StringBuilder("printfLocationInfo\n======================================\n")
+    public void printfLocationInfo(String TAG) {
+        Log.d(TAG, new StringBuilder("----------------------------\n")
                 .append("[Latitude ]: ").append(getLatitude())
                 .append(" [Longitude]: ").append(getLongitude())
                 .append(" [Altitude]: ").append(getAltitude())
-                .append("\n======================================")
+                .append("\n----------------------------")
                 .toString());
     }
 }

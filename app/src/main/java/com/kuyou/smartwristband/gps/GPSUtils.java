@@ -1,5 +1,7 @@
 package com.kuyou.smartwristband.gps;
 
+import com.kuyou.smartwristband.gps.filter.TrackPoint;
+
 /**
  * action1: 坐标系转化
  * action2: 距离计算
@@ -85,6 +87,16 @@ public class GPSUtils {
         double mgLat = lat + dLat;
         double mgLon = lon + dLon;
         return new double[]{mgLat, mgLon};
+    }
+
+    /**
+     * * 火星坐标系 (GCJ-02) to 84 * * @param lon * @param lat * @return
+     */
+    public static TrackPoint gcj02_To_Gps84(TrackPoint point) {
+        double[] gps = transform(point.getLatitude(), point.getLongitude());
+        point.setLatitude(point.getLatitude() * 2 - gps[0]);
+        point.setLongitude(point.getLongitude() * 2 - gps[1]);
+        return point;
     }
 
     /**

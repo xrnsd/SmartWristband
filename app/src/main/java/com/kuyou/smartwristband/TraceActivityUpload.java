@@ -178,15 +178,6 @@ public class TraceActivityUpload extends Activity {
         mDataAfterFilterAngle = 0;
         mDataAfterFilterDisTance = 0;
         mDataAfterFilterKaman = 0;
-        if (null == mSpeedFilter) {
-            mSpeedFilter = new TrajectoryFluctuationFilter(new TrajectoryFilter.OnDataFilterListener() {
-                @Override
-                public void onDataAfterFilter(TrackPoint point) {
-                    //drawTraceLine(list);
-                }
-            });
-        }
-        //mSpeedFilter.filter(list);
     }
 
     private void drawTraceLine(List<TrackPoint> list) {

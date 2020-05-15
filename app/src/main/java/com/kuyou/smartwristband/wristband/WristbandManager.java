@@ -21,8 +21,6 @@ import com.google.gson.Gson;
 import com.kuyou.smartwristband.R;
 import com.kuyou.smartwristband.base.BaseAppcation;
 
-import com.kuyou.smartwristband.gps.GPSUtils;
-import com.kuyou.smartwristband.gps.filter.TrackPoint;
 import com.kuyou.smartwristband.utils.HttpReqUtil;
 import com.kuyou.smartwristband.utils.ThreadPoolUtils;
 import com.zhj.bluetooth.zhjbluetoothsdk.ble.BleManager;

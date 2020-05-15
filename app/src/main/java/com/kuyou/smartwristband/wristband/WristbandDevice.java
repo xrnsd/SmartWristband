@@ -36,9 +36,6 @@ import com.zhj.bluetooth.zhjbluetoothsdk.ble.HandlerBleDataResult;
 import com.zhj.bluetooth.zhjbluetoothsdk.util.SPHelper;
 import com.zhj.bluetooth.zhjbluetoothsdk.util.ToastUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * action : 用于获取记录[手环+终端]完整设备信息
  * <p>
@@ -224,7 +221,7 @@ public class WristbandDevice extends WristbandInfo implements View.OnLongClickLi
      */
     public boolean isUploadReady() {
         return null != mWristbandId && !NONE.equals(mWristbandId)
-               && hasLocation();
+                && hasLocation();
     }
 
     //手环ID长按复制
@@ -265,6 +262,14 @@ public class WristbandDevice extends WristbandInfo implements View.OnLongClickLi
             printfAMapLocationInfo(location);
         }
     };
+
+    @Override
+    public void applyTrackPoint(TrackPoint point) {
+        //坐标转化为火星坐标
+        point = GPSUtils.gcj02_To_Gps84(point);
+        super.applyTrackPoint(point);
+        //printfLocationInfo(TAG);
+    }
 
     private void printfAMapLocationInfo(AMapLocation location) {
         StringBuffer sb = new StringBuffer("AMapLocationListener > onLocationChanged > printfAMapLocationInfo :");
@@ -598,50 +603,38 @@ public class WristbandDevice extends WristbandInfo implements View.OnLongClickLi
     // =========================================      位置轨迹处理      ================================================
     private TrajectoryFilter mFluctuationFilter, mTrajectoryKalmanFilter;
 
-    @Override
-    public void setLocation(Location location) {
-        super.setLocation(location);
-    }
-
     /**
      * action: 过滤轨迹 <br/>
-     * <p>
      */
     private void filter(TrackPoint point) {
         if (null == mTrajectoryKalmanFilter) {
-            mTrajectoryKalmanFilter = new TrajectoryKalmanFilter(mContext.getApplicationContext(),
-            new TrajectoryFilter.OnDataFilterListener() {
+            mTrajectoryKalmanFilter = new TrajectoryKalmanFilter(mContext.getApplicationContext(), new TrajectoryFilter.OnDataFilterListener() {
                 @Override
                 public void onDataAfterFilter(TrackPoint point) {
-                    point.printfLocationInfo(TAG+">mTrajectoryKalmanFilter>onDataAfterFilter");
                     mFluctuationFilter.filter(point);
                 }
             });
-            mFluctuationFilter = new TrajectoryFluctuationFilter(new TrajectoryFilter.OnDataFilterListener() {
+            mFluctuationFilter = new TrajectoryFluctuationFilter(new TrajectoryFluctuationFilter.OnDataFilterControl() {
                 @Override
                 public void onDataAfterFilter(TrackPoint point) {
-                    point.printfLocationInfo(TAG+">SpeedFilter>onDataAfterFilter");
-
                     //将轨迹信息直接合并到当前手环信息里面
                     applyTrackPoint(point);
+                    Log.d(TAG, "TrajectoryFilter filter once ======================================================================================  ");
+                }
+
+                @Override
+                public int getDataFilterPolicy() {
+                    int policy = 0;
+                    policy |= TrajectoryFluctuationFilter.POLICY_FILTER_SPEED;
+                    policy |= TrajectoryFluctuationFilter.POLICY_FILTER_BEARING_SPEED;
+                    policy |= TrajectoryFluctuationFilter.POLICY_FILTER_ALTITUDE;
+                    return policy;
                 }
             });
         }
-        if(!hasLocation()){ //第一次定位时，先初始化位置
+        if (!hasLocation()) { //第一次定位时，先初始化位置
             applyTrackPoint(point);
         }
         mTrajectoryKalmanFilter.filter(point);
-    }
-
-    @Override
-    public void applyTrackPoint(TrackPoint point) {
-        //坐标转化为火星坐标
-        double[] ll = GPSUtils.gcj02_To_Gps84(point.getLatitude(), point.getLongitude());
-        point.setLatitude(ll[0]);
-        point.setLongitude(ll[1]);
-
-        super.applyTrackPoint(point);
-
-        printfLocationInfo(TAG);
     }
 }

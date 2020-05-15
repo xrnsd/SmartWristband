@@ -196,12 +196,6 @@ public class TraceActivity_Simple extends Activity {
                             aMap.addMarker(markerOption);
                         }
                     });
-            mSpeedFilter = new TrajectoryFluctuationFilter(new TrajectoryFilter.OnDataFilterListener() {
-                @Override
-                public void onDataAfterFilter(TrackPoint point) {
-                    drawTraceLine(list);
-                }
-            });
         }
         //mKalmanLocationService.filter(list);
     }

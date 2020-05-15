@@ -75,27 +75,27 @@ public class TrajectoryKalmanFilter extends TrajectoryFilter implements SensorEv
         }
 
         private void handlePredict(SensorGpsDataItem sdi) {
-            Log.d(TAG, String.format("%d%d KalmanPredict : accX=%f, accY=%f",
-                    LogMessageType.KALMAN_PREDICT.ordinal(),
-                    (long) sdi.getTimestamp(),
-                    sdi.getAbsEastAcc(),
-                    sdi.getAbsNorthAcc()));
+//            Log.d(TAG, String.format("%d%d KalmanPredict : accX=%f, accY=%f",
+//                    LogMessageType.KALMAN_PREDICT.ordinal(),
+//                    (long) sdi.getTimestamp(),
+//                    sdi.getAbsEastAcc(),
+//                    sdi.getAbsNorthAcc()));
             m_kalmanFilter.predict(sdi.getTimestamp(), sdi.getAbsEastAcc(), sdi.getAbsNorthAcc());
         }
 
         private void handleUpdate(SensorGpsDataItem sdi) {
             double xVel = sdi.getSpeed() * Math.cos(sdi.getCourse());
             double yVel = sdi.getSpeed() * Math.sin(sdi.getCourse());
-            Log.d(TAG, String.format("%d%d KalmanUpdate : pos lon=%f, lat=%f, xVel=%f, yVel=%f, posErr=%f, velErr=%f",
-                    LogMessageType.KALMAN_UPDATE.ordinal(),
-                    (long) sdi.getTimestamp(),
-                    sdi.getGpsLon(),
-                    sdi.getGpsLat(),
-                    xVel,
-                    yVel,
-                    sdi.getPosErr(),
-                    sdi.getVelErr()
-            ));
+//            Log.d(TAG, String.format("%d%d KalmanUpdate : pos lon=%f, lat=%f, xVel=%f, yVel=%f, posErr=%f, velErr=%f",
+//                    LogMessageType.KALMAN_UPDATE.ordinal(),
+//                    (long) sdi.getTimestamp(),
+//                    sdi.getGpsLon(),
+//                    sdi.getGpsLat(),
+//                    xVel,
+//                    yVel,
+//                    sdi.getPosErr(),
+//                    sdi.getVelErr()
+//            ));
 
             m_kalmanFilter.update(
                     sdi.getTimestamp(),
@@ -153,7 +153,7 @@ public class TrajectoryKalmanFilter extends TrajectoryFilter implements SensorEv
 
                     //warning!!!
                     if (sdi.getGpsLat() == SensorGpsDataItem.NOT_INITIALIZED
-                        ||sdi.getGpsAlt() == SensorGpsDataItem.NOT_INITIALIZED) {
+                            || sdi.getGpsAlt() == SensorGpsDataItem.NOT_INITIALIZED) {
                         handlePredict(sdi);
                     } else {
                         handleUpdate(sdi);
@@ -177,6 +177,8 @@ public class TrajectoryKalmanFilter extends TrajectoryFilter implements SensorEv
                 return;
             }
             m_lastLocation = location;
+
+            location.printfLocationInfo(TAG);
             onDataAfterFilter(location);
         }
     }
@@ -317,8 +319,6 @@ public class TrajectoryKalmanFilter extends TrajectoryFilter implements SensorEv
     @Override
     public void filter(TrackPoint point) {
         if (point == null) return;
-        Log.d(TAG, "> filter");
-
         double x, y, xVel, yVel, posDev, course, speed;
         long timeStamp;
         speed = point.getSpeed();
@@ -329,16 +329,15 @@ public class TrajectoryKalmanFilter extends TrajectoryFilter implements SensorEv
         yVel = speed * Math.sin(course);
         posDev = point.getAccuracy();
         timeStamp = nano2milli(point.getElapsedRealtimeNanos());
-        //WARNING!!! here should be speed accuracy, but point.hasSpeedAccuracy()
-        // and point.getSpeedAccuracyMetersPerSecond() requares API 26
+
         double velErr = point.getAccuracy() * 0.1;
 
-        String logStr = String.format("%d%d GPS : pos lat=%f, lon=%f, alt=%f, hdop=%f, speed=%f, bearing=%f, sa=%f",
+        /*String logStr = String.format("%d%d GPS : pos lat=%f, lon=%f, alt=%f, hdop=%f, speed=%f, bearing=%f, sa=%f",
                 LogMessageType.GPS_DATA.ordinal(),
                 timeStamp, point.getLatitude(),
                 point.getLongitude(), point.getAltitude(), point.getAccuracy(),
                 point.getSpeed(), point.getBearing(), velErr);
-        Log.d(TAG, logStr);
+        Log.d(TAG, logStr);*/
 
         GeomagneticField f = new GeomagneticField(
                 (float) point.getLatitude(),
